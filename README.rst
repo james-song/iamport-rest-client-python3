@@ -297,6 +297,22 @@ Python3 사용자를 위한 아임포트 REST API 연동 모듈입니다.
         pass
 
 
+구매자의 빌링키 정보를 삭제 합니다
+
+.. code-block:: python
+
+    # 테스트용 값
+    customer_uid = '{고객 아이디}'
+    try:
+        response = iamport.customer_delete(customer_uid)
+    except Iamport.ResponseError as e:
+        # 응답 에러 처리
+        pass
+    except Iamport.HttpError as http_error:
+        # HTTP not 200 응답 에러 처리
+        pass
+
+
 개발환경 및 테스트 설정
 ==========================
 macOS 기준

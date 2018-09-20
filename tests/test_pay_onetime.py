@@ -1,3 +1,6 @@
+import uuid
+
+
 def test_pay_onetime(iamport):
     # Without 'card_number'
     payload_notEnough = {
@@ -14,7 +17,7 @@ def test_pay_onetime(iamport):
         assert "['card_number'] is required" in str(e)
 
     payload_full = {
-        'merchant_uid': 'qwer1234',
+        'merchant_uid': str(uuid.uuid4()),
         'amount': 5000,
         'card_number': '4092-0230-1234-1234',
         'expiry': '2019-03',

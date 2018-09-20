@@ -61,6 +61,12 @@ class Iamport:
                                               headers=headers, data=payload)
         return self.get_response(response)
 
+    def _delete(self, url, payload=None):
+        headers = self.get_headers()
+        response = self.requests_session.delete(url,
+                                                headers=headers, data=payload)
+        return self.get_response(response)
+
     def find_by_merchant_uid(self, merchant_uid):
         url = f'{self.imp_url}payments/find/{merchant_uid}'
         return self._get(url)
@@ -103,6 +109,10 @@ class Iamport:
     def customer_get(self, customer_uid):
         url = f'{self.imp_url}subscribe/customers/{customer_uid}'
         return self._get(url)
+
+    def customer_delete(self, customer_uid):
+        url = f'{self.imp_url}subscribe/customers/{customer_uid}'
+        return self._delete(url)
 
     @required(['merchant_uid', 'amount', 'card_number', 'expiry'])
     def pay_foreign(self, **kwargs):

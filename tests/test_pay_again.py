@@ -1,3 +1,6 @@
+import uuid
+
+
 def test_pay_again(iamport):
     # Without 'customer_uid'
     payload_notEnough = {
@@ -12,7 +15,7 @@ def test_pay_again(iamport):
 
     payload_full = {
         'customer_uid': '00000000',
-        'merchant_uid': '1234qwer',
+        'merchant_uid': str(uuid.uuid4()),
         'amount': 5000,
     }
 
